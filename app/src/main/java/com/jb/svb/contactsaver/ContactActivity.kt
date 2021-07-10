@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.jb.svb.contactsaver.databinding.ActivityContactBinding
+import timber.log.Timber
 
 class ContactActivity : AppCompatActivity() {
     private lateinit var binding: ActivityContactBinding
@@ -19,6 +20,9 @@ class ContactActivity : AppCompatActivity() {
         binding = ActivityContactBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.headerLayout.toolBar)
+
+        // Timber Initialization
+        Timber.plant(Timber.DebugTree())
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostContainer) as NavHostFragment
