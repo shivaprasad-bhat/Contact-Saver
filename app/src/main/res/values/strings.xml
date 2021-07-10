@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Contact Saver</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_contactNumber">Mobile Number</string>
+    <string name="hint_email">Email</string>
+    <string name="save">save</string>
 </resources>
