@@ -6,9 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jb.svb.contactsaver.core.LiveDataValidator
 import com.jb.svb.contactsaver.core.LiveDataValidatorResolver
+import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
+import javax.inject.Inject
 
-class NewContactViewModel : ViewModel() {
+@HiltViewModel
+class NewContactViewModel @Inject constructor() : ViewModel() {
     val contactName: MutableLiveData<String> = MutableLiveData()
     val mobileNumber: MutableLiveData<String> = MutableLiveData()
     val emailId: MutableLiveData<String> = MutableLiveData()
