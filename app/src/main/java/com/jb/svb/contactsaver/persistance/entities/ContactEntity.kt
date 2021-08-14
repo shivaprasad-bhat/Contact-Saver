@@ -2,6 +2,7 @@ package com.jb.svb.contactsaver.persistance.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.jb.svb.contactsaver.models.Contact
 
 @Entity(tableName = "contacts")
 data class ContactEntity(
@@ -11,3 +12,7 @@ data class ContactEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = -1
 )
+
+fun ContactEntity.asModel(): Contact {
+    return Contact(contactName, emailId, mobileNumber, id)
+}
