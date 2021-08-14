@@ -6,12 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jb.svb.contactsaver.core.LiveDataValidator
 import com.jb.svb.contactsaver.core.LiveDataValidatorResolver
+import com.jb.svb.contactsaver.repositories.ContactRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class NewContactViewModel @Inject constructor() : ViewModel() {
+class NewContactViewModel @Inject
+constructor(
+    private val repository: ContactRepository
+) : ViewModel() {
+
     val contactName: MutableLiveData<String> = MutableLiveData()
     val mobileNumber: MutableLiveData<String> = MutableLiveData()
     val emailId: MutableLiveData<String> = MutableLiveData()
@@ -70,6 +75,5 @@ class NewContactViewModel @Inject constructor() : ViewModel() {
         Timber.i("User Input: Name - ${contactName.value}, Mobile Number - ${mobileNumber.value}, Email Id - ${emailId.value}")
         mobileValidator.isValid()
     }
-
 
 }
