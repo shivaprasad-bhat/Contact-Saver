@@ -4,10 +4,13 @@ import android.util.Patterns
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.jb.svb.contactsaver.core.LiveDataValidator
 import com.jb.svb.contactsaver.core.LiveDataValidatorResolver
+import com.jb.svb.contactsaver.models.Contact
 import com.jb.svb.contactsaver.repositories.ContactRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -22,6 +25,8 @@ constructor(
     val emailId: MutableLiveData<String> = MutableLiveData()
 
     val isFormValid: MediatorLiveData<Boolean> = MediatorLiveData()
+
+    val showProgressBar: MutableLiveData<Boolean> = MutableLiveData(false)
 
     // Live Data Validator
     val contactNameValidator = LiveDataValidator(contactName).apply {
@@ -76,4 +81,13 @@ constructor(
         mobileValidator.isValid()
     }
 
+
+    fun addNewContact() {
+        showProgressBar.postValue(true)
+        viewModelScope.launch {
+            val model = Contact(contactName.value!!, emailId.value!!, mobileNumber.value!!.toLong())
+            repository.addContact(model)
+            showProgressBar.postValue(false)
+        }
+    }
 }

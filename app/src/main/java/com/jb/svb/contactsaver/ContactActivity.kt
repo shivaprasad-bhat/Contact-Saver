@@ -8,8 +8,10 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.jb.svb.contactsaver.databinding.ActivityContactBinding
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class ContactActivity : AppCompatActivity() {
     private lateinit var binding: ActivityContactBinding
 

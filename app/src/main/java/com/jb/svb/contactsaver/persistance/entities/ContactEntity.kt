@@ -10,7 +10,7 @@ data class ContactEntity(
     val mobileNumber: Long,
     val emailId: String,
     @PrimaryKey(autoGenerate = true)
-    val id: Int = -1
+    val id: Int = 0
 )
 
 fun ContactEntity.asModel(): Contact {

@@ -8,7 +8,9 @@ import androidx.fragment.app.viewModels
 import com.jb.svb.contactsaver.R
 import com.jb.svb.contactsaver.databinding.FragmentNewContactBinding
 import com.jb.svb.contactsaver.viewmodels.NewContactViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewContactFragment : Fragment(R.layout.fragment_new_contact) {
 
     private lateinit var binding: FragmentNewContactBinding
