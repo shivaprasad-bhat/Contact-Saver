@@ -1,5 +1,6 @@
 package com.jb.svb.contactsaver.repositories
 
+import com.jb.svb.contactsaver.core.CustomResponse
 import com.jb.svb.contactsaver.models.Contact
 import com.jb.svb.contactsaver.models.asDatabaseModel
 import com.jb.svb.contactsaver.persistance.dao.ContactDao
@@ -9,9 +10,14 @@ class ContactRepository(
     private val contactDao: ContactDao
 ) {
 
-    suspend fun addContact(contact: Contact) {
+    suspend fun addContact(contact: Contact): CustomResponse<Long> {
         val entity: ContactEntity = contact.asDatabaseModel()
-        contactDao.insert(entity)
+        return try {
+            val response = contactDao.insert(entity)
+            CustomResponse.Success(response)
+        } catch (e: Exception) {
+            CustomResponse.Failure(e.message!!)
+        }
     }
 
 }

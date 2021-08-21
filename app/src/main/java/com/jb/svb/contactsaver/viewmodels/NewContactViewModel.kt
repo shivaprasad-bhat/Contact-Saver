@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jb.svb.contactsaver.core.CustomResponse
 import com.jb.svb.contactsaver.core.LiveDataValidator
 import com.jb.svb.contactsaver.core.LiveDataValidatorResolver
 import com.jb.svb.contactsaver.models.Contact
@@ -19,6 +20,8 @@ class NewContactViewModel @Inject
 constructor(
     private val repository: ContactRepository
 ) : ViewModel() {
+
+    val newContactResponse = MutableLiveData<CustomResponse<Long>>()
 
     val contactName: MutableLiveData<String> = MutableLiveData()
     val mobileNumber: MutableLiveData<String> = MutableLiveData()
@@ -86,8 +89,10 @@ constructor(
         showProgressBar.postValue(true)
         viewModelScope.launch {
             val model = Contact(contactName.value!!, emailId.value!!, mobileNumber.value!!.toLong())
-            repository.addContact(model)
+            val response = repository.addContact(model)
             showProgressBar.postValue(false)
+            newContactResponse.postValue(response)
         }
+
     }
 }
