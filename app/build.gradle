@@ -42,6 +42,7 @@ android {
 dependencies {
     // Navigation Component Version
     def nav_version = "2.3.5"
+    def sqlcipher_version = "4.4.2"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
@@ -70,5 +71,8 @@ dependencies {
     // HILT
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // Encryption of Room Database
+    implementation "net.zetetic:android-database-sqlcipher:$sqlcipher_version"
 
 }
