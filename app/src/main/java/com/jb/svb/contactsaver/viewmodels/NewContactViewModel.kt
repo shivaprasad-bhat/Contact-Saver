@@ -1,6 +1,7 @@
 package com.jb.svb.contactsaver.viewmodels
 
 import android.util.Patterns
+import android.view.View
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +11,7 @@ import com.jb.svb.contactsaver.core.LiveDataValidator
 import com.jb.svb.contactsaver.core.LiveDataValidatorResolver
 import com.jb.svb.contactsaver.models.Contact
 import com.jb.svb.contactsaver.repositories.ContactRepository
+import com.jb.svb.contactsaver.utilities.hideKeyBoard
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -85,8 +87,10 @@ constructor(
     }
 
 
-    fun addNewContact() {
+    fun addNewContact(view: View) {
+        view.hideKeyBoard()
         showProgressBar.postValue(true)
+
         viewModelScope.launch {
             val model = Contact(contactName.value!!, emailId.value!!, mobileNumber.value!!.toLong())
             val response = repository.addContact(model)
