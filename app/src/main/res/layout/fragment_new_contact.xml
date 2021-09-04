@@ -41,6 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/hint_contactNumber"
+                android:digits="0123456789"
+                android:inputType="phone"
                 android:text="@={viewModel.mobileNumber}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -75,7 +77,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/padding_small"
                 android:enabled="@{viewModel.isFormValid}"
-                android:onClick="@{() -> viewModel.addNewContact()}"
+                android:onClick="@{(v) -> viewModel.addNewContact(v)}"
                 android:text="@string/save"
                 android:visibility="@{ viewModel.showProgressBar ? View.GONE : View.VISIBLE}" />
 
