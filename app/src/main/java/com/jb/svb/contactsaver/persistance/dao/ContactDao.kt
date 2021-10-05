@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.jb.svb.contactsaver.persistance.entities.ContactEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ContactDao {
@@ -21,7 +22,7 @@ interface ContactDao {
     suspend fun delete(contact: ContactEntity)
 
     @Query("SELECT * FROM contacts")
-    suspend fun getAll(): List<ContactEntity>
+    fun getAll(): Flow<List<ContactEntity>>
 
     @Query("SELECT * FROM contacts WHERE id = :id")
     suspend fun getById(id: Int): ContactEntity
