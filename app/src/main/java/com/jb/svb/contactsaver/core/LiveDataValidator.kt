@@ -6,7 +6,7 @@ typealias Predicate = (value: Any?) -> Boolean
 
 class LiveDataValidator<T>(private val liveData: MutableLiveData<T>) {
     private val error = mutableListOf<String>()
-    val errorLatest = MutableLiveData<String>()
+    val errorLatest = MutableLiveData<String?>()
     private var rules = mutableListOf<Predicate>()
 
     fun addRule(errorMessage: String, predicate: Predicate) {
