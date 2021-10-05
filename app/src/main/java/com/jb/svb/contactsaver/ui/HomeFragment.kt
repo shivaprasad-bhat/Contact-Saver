@@ -30,13 +30,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
             contactRecyclerView.adapter = adapter
             contactRecyclerView.addItemDecoration(itemDecoration)
-
         }
 
         viewModel.listOfContacts.asLiveData().observe(viewLifecycleOwner) {
             adapter.itemList = it.toMutableList()
         }
-
 
         viewModel.navigateToCreateContact.observe(viewLifecycleOwner) {
             findNavController().navigate(
@@ -44,7 +42,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 )
             )
         }
-
     }
-
 }

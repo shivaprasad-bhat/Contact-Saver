@@ -11,6 +11,10 @@ fun Context.showToast(@StringRes messageId: Int) {
     Toast.makeText(this, messageId, Toast.LENGTH_LONG).show()
 }
 
+fun Context.showToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+}
+
 fun View.showSnackbar(@StringRes messageId: Int) {
     Snackbar.make(this, messageId, Snackbar.LENGTH_LONG).show()
 }
