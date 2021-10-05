@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10dp">
+
+    <TextView
+        android:id="@+id/heading_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abel"
+        android:text="@string/dialog_heading"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Contact Details" />
+
+    <ImageView
+        android:id="@+id/button_close"
+        android:layout_width="@dimen/_24dp"
+        android:layout_height="@dimen/_24dp"
+        android:contentDescription="@string/close"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="heading_tv, button_close" />
+
+
+    <TextView
+        android:id="@+id/contact_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10dp"
+        android:drawablePadding="@dimen/_10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:drawableStartCompat="@drawable/ic_person"
+        app:drawableTint="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toTopOf="@id/contact_mobile_tv"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Aman" />
+
+    <TextView
+        android:id="@+id/contact_mobile_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10dp"
+        android:drawablePadding="@dimen/_10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        app:drawableStartCompat="@drawable/ic_phone"
+        app:drawableTint="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toTopOf="@id/contact_email_tv"
+        app:layout_constraintTop_toBottomOf="@id/contact_name_tv"
+        tools:text="+91-09876543211" />
+
+    <TextView
+        android:id="@+id/contact_email_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10dp"
+        android:drawablePadding="@dimen/_10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        app:drawableStartCompat="@drawable/ic_email"
+        app:drawableTint="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toTopOf="@id/bottom_barrier"
+        app:layout_constraintTop_toBottomOf="@id/contact_mobile_tv"
+        tools:text="abc@abc.com" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bottom_barrier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:barrierMargin="@dimen/_24dp"
+        app:constraint_referenced_ids="contact_email_tv" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        app:layout_constraintEnd_toStartOf="@id/button_delete"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottom_barrier" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_edit"
+        app:layout_constraintTop_toBottomOf="@id/bottom_barrier" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

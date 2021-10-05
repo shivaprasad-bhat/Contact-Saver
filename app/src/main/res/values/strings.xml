@@ -4,4 +4,8 @@
     <string name="hint_contactNumber">Mobile Number</string>
     <string name="hint_email">Email</string>
     <string name="save">save</string>
+    <string name="close">Close</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="dialog_heading">Contact Details</string>
 </resources>
